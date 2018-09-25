@@ -2,7 +2,7 @@
   "manifest_version": 2, //固定的
   "name": "培训机构识别", //插件名称
   "version": "1.0", //插件使用的版本
-  "description": "自动识别培训机构,支持前程无忧,BOSS直聘,中华英才网搜索界面识别", //插件的描述
+  "description": "自动识别培训机构,支持前程无忧,BOSS直聘,中华英才网搜索页识别,职位详情页识别,提交培训机构，支持智联职位详情页识别,提交培训机构", //插件的描述
   "browser_action": { //插件加载后生成图标
     "default_icon": "logo.png",//图标的图片
     "default_title": "培训机构识别", //鼠标移到图标显示的文字
@@ -12,7 +12,7 @@
     "*://www.peixun69.com/*"
   ],
   "content_scripts": [{  //对页面内容进行操作的脚本
-    "matches": ["*://*.51job.com/*","*://*.zhipin.com/*","*://*.chinahr.com/*"],  //满足什么条件执行该插件
+    "matches": ["*://*.51job.com/*","*://*.zhipin.com/*","*://*.chinahr.com/*","*://*.zhaopin.com/*"],  //满足什么条件执行该插件
     "js": ["js/jquery-3.2.1.min.js","js/findAndReplaceDOMText.js", "js/content-script-all.js"],
     "run_at": "document_end"  //在document加载时执行该脚本
   }],
