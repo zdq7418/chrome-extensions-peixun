@@ -120,8 +120,8 @@ function getAllCompanyName() {
         var zhaopinmain = $(".clearfix")[1];
         checkData(name, zhaopinmain);
         address=$(".add-txt")[0].innerText;
-        var html='<a class=" info-apply" href="javascript:;" id="zhipinBtn" style="height: 30px;margin-top: 5px;line-height: 30px;">举报培训机构-插件提供</a>';
-        $("#applyVacButton1").after(html);
+        var html='<a class="a-button a--bordered a--filled" href="javascript:;" id="zhipinBtn" style="height: 30px;margin-top: 5px;line-height: 30px;">举报培训机构-插件提供</a>';
+        $("#applyButton").after(html);
         document.getElementById('zhipinBtn').addEventListener("click",function(){
             var data={
                 "name":name,
