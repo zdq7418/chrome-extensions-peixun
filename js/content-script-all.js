@@ -63,9 +63,9 @@ function getAllCompanyName() {
         }
         var job_detailReg=/job_detail/;
         if(job_detailReg.test(url)){
-            var time=document.getElementsByClassName("time");
+            var time=document.getElementsByClassName("job-status");
             var job_detail=document.getElementById("main");
-            name=$(".name")[1].innerText;
+            name=$(".job-sec .name")[0].innerText;
             address=$(".location-address")[0].innerText;
             checkData(name,job_detail);
             findAndReplaceDOMText(job_detail, {
