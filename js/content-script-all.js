@@ -134,7 +134,74 @@ function getAllCompanyName() {
         },false);
     }
 
+    /**
+     * 猎聘网
+     * @type {RegExp}
+     */
+    var liepin=/liepin/;
+    if(liepin.test(host)) {
+        var company_name=document.getElementsByClassName("company-name");
+        for (var i = 0; i < company_name.length; i++) {
+            checkData($(company_name[i])[0].innerText, company_name[i]);
+        }
+        var hookHtml=/www.liepin.com\/job/;
+        if (hookHtml.test(url)){
+            var hidJobID=document.getElementsByClassName("company-logo");
+            name=$(".company-logo")[0].children[1].innerText;
+            address=$(".new-compintro")[0].children[2].innerText.replace("公司地址：","");
+            checkData(name,hidJobID[0]);
+            var html='<a href="javascript:;" class="btn-apply btn btn-warning" id="liepinBtn" style="top: auto;background-color:#ff6000;font-size: 15px;">举报培训机构-插件提供</a>';
+            $($(".btn-apply")[0]).after(html);
+            document.getElementById('liepinBtn').addEventListener("click",function(){
+                var data={
+                    "name":name,
+                    "address":address,
+                    "cityId":cityId,
+                    "source":"猎聘网",
+                    "remark":"来自谷歌浏览器插件提交数据"
+                };
+                submitData(data);
+            },false);
+        }
+
+    }
+
+    /**
+     * 58同城
+     * @type {RegExp}
+     */
+    var $58_com=/58.com/;
+    if($58_com.test(host)) {
+        var company_name=document.getElementsByClassName("comp_name");
+        for (var i = 0; i < company_name.length; i++) {
+            checkData($(company_name[i])[0].innerText, company_name[i]);
+        }
+        var hookHtml=/58.com\/tech/;
+        if (hookHtml.test(url)){
+            var hidJobID=document.getElementsByClassName("baseInfo_link");
+            name=$(".baseInfo_link")[0].innerText;
+            console.log($($(".pos-area")[0])[0].innerText);
+            address=$($(".pos-area")[0])[0].innerText;
+            checkData(name,hidJobID[0]);
+            var html='<a class="btn btn-orange btn-large applyJobBtn" id="liepinBtn" href="javascript:void(0)">举报培训机构-插件提供</a>';
+            $($(".applyJobBtn")[0]).after(html);
+            document.getElementById('liepinBtn').addEventListener("click",function(){
+                var data={
+                    "name":name,
+                    "address":address,
+                    "cityId":cityId,
+                    "source":"58同城",
+                    "remark":"来自谷歌浏览器插件提交数据"
+                };
+                submitData(data);
+            },false);
+        }
+
+    }
+
 }
+
+
 
 getAllCompanyName();
 function checkData(compyName,container) {
